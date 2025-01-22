@@ -5,9 +5,19 @@ export const userApi = createApi({
     baseQuery: fetchBaseQuery({baseUrl: "https://jsonplaceholder.typicode.com/"}),
     endpoints: (builder) => ({
         getAllUsers: builder.query({
-            query: () => "users"
+            query: () => "users",
+            providesTags: ["Users"]
+        }),
+
+        addNewUser: builder.mutation({
+            query: (userDetails) => ({
+                url: "users",
+                method: "POST",
+                body: userDetails
+            }),
+            invalidatesTags: ["Users"]
         })
     })
 })
 
-export const {useGetAllUsersQuery} = userApi;
+export const {useGetAllUsersQuery, useAddNewUserMutation} = userApi;
