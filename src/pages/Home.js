@@ -4,8 +4,8 @@ const Home = () => {
     return (
         <>
             <p>Welcome to UserVault - A user management dashboard.</p>
-            <Link to={"users"}>See all users</Link>
-            <Link to={"add-user"}>Create User</Link>
+            <Link to={"users"} className="m-10">See all users</Link>
+            <Link to={"add-user"} className="m-10">Create User</Link>
         </>
     )
 }

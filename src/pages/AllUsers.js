@@ -1,7 +1,14 @@
+import { useGetAllUsersQuery } from "../store/APISlice";
+
 const AllUsers = () => {
+
+    const {data, isLoading, isError, error} = useGetAllUsersQuery();
+
     return (
         <>
-            <p>Here comes the list of all users.</p>
+            {isLoading && <p>Loading...</p> }
+            {data && <p>Data recieved.</p>}
+            {isError && <p>Error ${error} recieved.</p>}
         </>
     )
 };
