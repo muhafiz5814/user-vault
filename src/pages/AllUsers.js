@@ -12,7 +12,7 @@ const AllUsers = () => {
         if(isSuccess) {
             alert(`User deleted successfully.`);
         }
-    })
+    }, [isSuccess])
 
     if (isLoading) return <p>Loading...</p>
     
