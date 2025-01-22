@@ -1,8 +1,8 @@
 const Home = () => {
     return (
-        <h1>
-            This is home page of UserVault.
-        </h1>
+        <>
+            <p className="mx-auto text-4xl">This is home page of UserVault.</p>
+        </>
     )
 }
 
