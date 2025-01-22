@@ -1,7 +1,11 @@
+import { Link } from "react-router";
+
 const Home = () => {
     return (
         <>
-            <p className="mx-auto text-4xl">This is home page of UserVault.</p>
+            <p>Welcome to UserVault - A user management dashboard.</p>
+            <Link to={"users"}>See all users</Link>
+            <Link to={"add-user"}>Create User</Link>
         </>
     )
 }
