@@ -4,6 +4,7 @@ import Layout from "./components/Layout";
 import Home from "./pages/Home";
 import AllUsers from "./pages/AllUsers";
 import NewUser from "./pages/NewUser";
+import EditUser from "./pages/EditUser";
 
 export const router = createBrowserRouter([
     {
@@ -21,6 +22,10 @@ export const router = createBrowserRouter([
             {
                 path: "add-user",
                 element: <NewUser />
+            },
+            {
+                path: "edit-user/:id",
+                element: <EditUser />
             }
         ]
     }
