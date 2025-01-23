@@ -1,3 +1,4 @@
+// Configure a redux store to manage global states throughout the project.
 import { configureStore } from "@reduxjs/toolkit";
 
 import { userApi } from "./APISlice";

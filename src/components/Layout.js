@@ -1,3 +1,5 @@
+// Outer layout component for all the page components.
+// This is parent component of every other component.
 import { Outlet } from "react-router";
 
 const Layout = () => {

@@ -1,3 +1,4 @@
+// Home page component to render on landing page.
 import { Link } from "react-router";
 
 const Home = () => {

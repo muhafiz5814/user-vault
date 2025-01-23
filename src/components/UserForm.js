@@ -1,15 +1,20 @@
+// A common form component for creating new user and updating the existing users.
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import {useAddNewUserMutation, useEditUserMutation } from "../store/APISlice";
 
 const UserForm = ({user = {}, Editing = false}) => {
 
+    // Get navigate function from useNavigate hook to go to a specific path.
     const navigate = useNavigate();
 
+    // Get add New User mutation trigger function to create a new user.
     const [addNewUser, {isLoading: isAdding, isError: isAddingError, error: addingError, data: addedData, isSuccess: isAddingSuccess}] = useAddNewUserMutation();
 
+    // Get edit User mutation trigger function to update an existing user.
     const [editUser, {isSuccess: isUpdatingSuccess, isLoading: isUpdating, isError: isUpdatingError, error: updatingError}] = useEditUserMutation();
 
+    // Show respective success messages after creating or updating user.
     useEffect(() => {
         if(isAddingSuccess) {
             alert("User added successfully");
@@ -21,6 +26,7 @@ const UserForm = ({user = {}, Editing = false}) => {
         }
     }, [isAddingSuccess, isUpdatingSuccess]);
 
+    // Initial state for input form elements while going to create a new user.
     const initialState = {
         name: "",
         username: "",
@@ -44,11 +50,21 @@ const UserForm = ({user = {}, Editing = false}) => {
         }
     }
 
+    // If UserForm is working for editing the existing user, it will set form data to user details to pre fill the input elements of the form.
+    // If UserForm is working for creating a new user, it will set form data to empty initial state to pre fill the input elements of the form that is keep them empty.
     const [formData, setFormData] = useState(Editing ? user : initialState);
 
+    // As we have nested properties in state, Different conditions and checks are required to update the state along with input elements to make it controlled form component.
+    /**
+     * Handles input changes and updates state according to input value change.
+     * Can be used for level and secondary level property changes.
+     * @param {Event} e event that triggered the change
+     * @param {String } parentField parent property of the changing input field property.
+     */
     const handleInputChange = (e, parentField = "") => {
         const { name, value } = e.target;
 
+        // If changing property is secondary level, then first we have to copy top level properties and then change a specific secondary level property using name and value.
         if (parentField) {
             setFormData((prev) => ({
             ...prev,
@@ -65,9 +81,17 @@ const UserForm = ({user = {}, Editing = false}) => {
         }
     };
 
+    /**
+     * Handles input changes and updates state according to input value change.
+     * Can be used for last level and secondary level property changes.
+     * @param {Event} e event that triggered the function
+     * @param {String} parentField top level property
+     * @param {String} childField secondary level property
+     */
     const handleNestedInputChange = (e, parentField, childField) => {
         const {name, value } = e.target;
 
+        // If changing property is last level, then first we have to copy top level and secondary level properties and then change a specific last level property using name and value.
         setFormData((prev) => ({
             ...prev,
             [parentField]: {
@@ -80,6 +104,12 @@ const UserForm = ({user = {}, Editing = false}) => {
         }));
     };
 
+    /**
+     * Handles submit operation.
+     * Calls two different mutations triggering functions based on the scenario that is if it is creating a user or updating a user.
+     * @param {Event} evt event that triggered the function
+     * @param {Number} id id of the user which is being updated
+     */
     const handleSubmit = async (evt, id = undefined) => {
         evt.preventDefault();
 
