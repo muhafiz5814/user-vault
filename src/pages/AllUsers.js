@@ -3,6 +3,9 @@ import { Link } from "react-router";
 import { useGetAllUsersQuery, useDeleteUserMutation } from "../store/APISlice";
 import { useEffect } from "react";
 
+import SingleDetail from "../components/SingleDetail";
+import ActionButton from "../components/ActionButton";
+
 const AllUsers = () => {
 
     // Fetch all the users from server using hook provided by userAPI slice.
@@ -51,39 +54,27 @@ const AllUsers = () => {
 
     return (
         <>
-            {/* Show all the users in tabular form once fetched from the server. Also add link to edit the user and button to delete the user. */}
-            <div className="text-white">
-                {data && 
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Username</th>
-                                <th>First Name</th>
-                                <th>Last Name</th>
-                                <th>E-mail</th>
-                                <th>Company</th>
-                                <th>ACTIONS</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {data.map((user) => <tr key={user.id}>
-                                <td>{user.id}</td>
-                                <td>{user.username}</td>
-                                {/* As data do not have first name and last name separately, we have to split full name to get first name and last name. */}
-                                <td>{user.name.split(" ")[0]}</td>
-                                <td>{user.name.split(" ")[1]}</td>
-                                <td>{user.email}</td>
-                                <td>{user.company.name}</td>
-                                {/* Add link to edit the user and a button to delete a user. */}
-                                <td>
-                                    <Link to={`../edit-user/${user.id}`}>Edit</Link> 
-                                    <button onClick={() => {deleteHandler(user.id)}}>Delete</button>
-                                </td>
-                            </tr>)}
-                        </tbody>
-                    </table>
-                }
+            {/* Show all the users once fetched from the server. Also add link to edit the user and button to delete the user. */}
+            <div className="text-white flex flex-wrap gap-3 p-8 justify-center">
+                {data && data.map((user) => (
+                    <div className="min-w-80 p-5 bg-slate-700 ps-8">
+                        <div>
+                            <SingleDetail title={"ID"} value={user.id} />
+                            <SingleDetail title={"Username"} value={user.username} />
+                            <SingleDetail title={"First Name"} value={user.name.split(" ")[0]} />
+                            <SingleDetail title={"Last Name"} value={user.name.split(" ")[1]} />
+                            <SingleDetail title={"E-mail"} value={user.email} />
+                            <SingleDetail title={"Company"} value={user.company.name} />
+                        </div>
+                        <div className="mt-4">
+                            <Link to={`../edit-user/${user.id}`} >
+                                <ActionButton title={"Edit"} />
+                            </Link>
+
+                            <ActionButton onClickHandler={() => {deleteHandler(user.id)}} title={"Delete"} />
+                        </div>
+                    </div>
+                ))}
             </div>
         </>
     )
