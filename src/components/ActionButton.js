@@ -1,3 +1,4 @@
+// Button component to render buttons on Detail card.
 const ActionButton = ({title, onClickHandler = () => {}}) => {
     return (
         <>
