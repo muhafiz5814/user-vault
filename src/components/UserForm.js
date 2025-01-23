@@ -132,161 +132,161 @@ const UserForm = ({user = {}, Editing = false}) => {
     };
 
     return (
-        <div>
-            <form onSubmit={!Editing ? handleSubmit : (evt) => handleSubmit(evt, user.id)} className="text-white">
+        <div className="bg-black  mx-auto">
+            <form onSubmit={!Editing ? handleSubmit : (evt) => handleSubmit(evt, user.id)} className="text-white bg-slate-300 ps-12">
                 {/* Basic Details */}
                 <div>
-                <label className="block text-gray-200">Name</label>
-                <input
-                    type="text"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleInputChange}
-                    className='text-black'
-                />
+                    <label className="block text-black">Name</label>
+                    <input
+                        type="text"
+                        name="name"
+                        value={formData.name}
+                        onChange={handleInputChange}
+                        className='text-black w-3/4 min-w-80 max-w-lg min-h-10'
+                    />
                 </div>
                 <div>
-                <label className="block text-gray-200">Username</label>
+                <label className="block text-black">Username</label>
                 <input
                     type="text"
                     name="username"
                     value={formData.username}
                     onChange={handleInputChange}
-                    className='text-black'
+                    className='text-black w-3/4 min-w-80 max-w-lg min-h-10'
                 />
                 </div>
                 <div>
-                <label className="block text-gray-200">Email</label>
+                <label className="block text-black">Email</label>
                 <input
                     type="email"
                     name="email"
                     value={formData.email}
                     onChange={handleInputChange}
-                    className='text-black'
+                    className='text-black w-3/4 min-w-80 max-w-lg min-h-10'
                 />
                 </div>
                 <div>
-                <label className="block text-gray-200">Phone</label>
+                <label className="block text-black">Phone</label>
                 <input
                     type="text"
                     name="phone"
                     value={formData.phone}
                     onChange={handleInputChange}
-                    className='text-black'
+                    className='text-black w-3/4 min-w-80 max-w-lg min-h-10'
                 />
                 </div>
                 <div>
-                <label className="block text-gray-200">Website</label>
+                <label className="block text-black">Website</label>
                 <input
                     type="text"
                     name="website"
                     value={formData.website}
                     onChange={handleInputChange}
-                    className='text-black'
+                    className='text-black w-3/4 min-w-80 max-w-lg min-h-10'
                 />
                 </div>
 
                 {/* Address Section */}
                 <div className="mt-4">
-                <h3 className="text-lg font-bold">Address</h3>
+                <h3 className="text-lg font-bold text-gray-900">Address</h3>
                 <div>
-                    <label className="block text-gray-200">Street</label>
+                    <label className="block text-black">Street</label>
                     <input
                     type="text"
                     name="street"
                     value={formData.address.street}
                     onChange={(e) => handleInputChange(e, 'address')}
-                    className='text-black'
+                    className='text-black w-3/4 min-w-80 max-w-lg min-h-10'
                     />
                 </div>
                 <div>
-                    <label className="block text-gray-200">Suite</label>
+                    <label className="block text-black">Suite</label>
                     <input
                     type="text"
                     name="suite"
                     value={formData.address.suite}
                     onChange={(e) => handleInputChange(e, 'address')}
-                    className='text-black'
+                    className='text-black w-3/4 min-w-80 max-w-lg min-h-10'
                     />
                 </div>
                 <div>
-                    <label className="block text-gray-200">City</label>
+                    <label className="block text-black">City</label>
                     <input
                     type="text"
                     name="city"
                     value={formData.address.city}
                     onChange={(e) => handleInputChange(e, 'address')}
-                    className='text-black'
+                    className='text-black w-3/4 min-w-80 max-w-lg min-h-10'
                     />
                 </div>
                 <div>
-                    <label className="block text-gray-200">Zipcode</label>
+                    <label className="block text-black">Zipcode</label>
                     <input
                     type="text"
                     name="zipcode"
                     value={formData.address.zipcode}
                     onChange={(e) => handleInputChange(e, 'address')}
-                    className='text-black'
+                    className='text-black w-3/4 min-w-80 max-w-lg min-h-10'
                     />
                 </div>
                 <div>
-                    <label className="block text-gray-200">Latitude</label>
+                    <label className="block text-black">Latitude</label>
                     <input
                     type="text"
                     name="lat"
                     value={formData.address.geo.lat}
                     onChange={(e) => handleNestedInputChange(e, 'address', 'geo')}
-                    className='text-black'
+                    className='text-black w-3/4 min-w-80 max-w-lg min-h-10'
                     />
                 </div>
                 <div>
-                    <label className="block text-gray-200">Longitude</label>
+                    <label className="block text-black">Longitude</label>
                     <input
                     type="text"
                     name="lng"
                     value={formData.address.geo.lng}
                     onChange={(e) => handleNestedInputChange(e, 'address', 'geo')}
-                    className='text-black'
+                    className='text-black w-3/4 min-w-80 max-w-lg min-h-10'
                     />
                 </div>
                 </div>
 
                 {/* Company Section */}
                 <div className="mt-4">
-                <h3 className="text-lg font-bold">Company</h3>
+                <h3 className="text-lg font-bold text-gray-900">Company</h3>
                 <div>
-                    <label className="block text-gray-200">Company Name</label>
+                    <label className="block text-black">Company Name</label>
                     <input
                     type="text"
                     name="name"
                     value={formData.company.name}
                     onChange={(e) => handleInputChange(e, 'company')}
-                    className='text-black'
+                    className='text-black w-3/4 min-w-80 max-w-lg min-h-10'
                     />
                 </div>
                 <div>
-                    <label className="block text-gray-200">CatchPhrase</label>
+                    <label className="block text-black">CatchPhrase</label>
                     <input
                     type="text"
                     name="catchPhrase"
                     value={formData.company.catchPhrase}
                     onChange={(e) => handleInputChange(e, 'company')}
-                    className='text-black'
+                    className='text-black w-3/4 min-w-80 max-w-lg min-h-10'
                     />
                 </div>
                 <div>
-                    <label className="block text-gray-200">BS</label>
+                    <label className="block text-black">BS</label>
                     <input
                     type="text"
                     name="bs"
                     value={formData.company.bs}
                     onChange={(e) => handleInputChange(e, 'company')}
-                    className='text-black'
+                    className='text-black w-3/4 min-w-80 max-w-lg min-h-10'
                     />
                 </div>
                 </div>
 
-                <button type="submit" className="p-4 bg-green-800">
+                <button type="submit" className="px-4 my-4 bg-green-800">
                     Submit
                 </button>
             </form>

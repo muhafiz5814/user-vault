@@ -11,7 +11,7 @@ const Layout = () => {
                         <p className="text-2xl ms-6 py-2">UserVault</p>
                     </div>
                 </header>
-                <main>
+                <main className="w-full">
                     <Outlet />
                 </main>
             </div>
