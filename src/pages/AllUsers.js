@@ -23,7 +23,7 @@ const AllUsers = () => {
     }, [isSuccess])
 
     // Show loading message while data is being loaded from the server.
-    if (isLoading) return <p>Loading...</p>
+    if (isLoading) return <p className="text-white text-2xl">Loading...</p>
     
     // Show error message to user if any error occures in fetching the data.
     if (isError) {
@@ -54,27 +54,32 @@ const AllUsers = () => {
 
     return (
         <>
-            {/* Show all the users once fetched from the server. Also add link to edit the user and button to delete the user. */}
-            <div className="text-white flex flex-wrap gap-3 p-8 justify-center">
-                {data && data.map((user) => (
-                    <div className="min-w-80 p-5 bg-slate-700 ps-8">
-                        <div>
-                            <SingleDetail title={"ID"} value={user.id} />
-                            <SingleDetail title={"Username"} value={user.username} />
-                            <SingleDetail title={"First Name"} value={user.name.split(" ")[0]} />
-                            <SingleDetail title={"Last Name"} value={user.name.split(" ")[1]} />
-                            <SingleDetail title={"E-mail"} value={user.email} />
-                            <SingleDetail title={"Company"} value={user.company.name} />
-                        </div>
-                        <div className="mt-4">
-                            <Link to={`../edit-user/${user.id}`} >
-                                <ActionButton title={"Edit"} />
-                            </Link>
+            <div className="mt-10 mx-auto">
+                <div>
+                    <Link to={"../add-user"} className="ms-10 bg-white text-black font-bold text-lg p-4">Create User</Link>
+                </div>
+                {/* Show all the users once fetched from the server. Also add link to edit the user and button to delete the user. */}
+                <div className="text-white flex flex-wrap gap-3 p-8 justify-center">
+                    {data && data.map((user) => (
+                        <div className="min-w-80 p-5 bg-slate-700 ps-8">
+                            <div>
+                                <SingleDetail title={"ID"} value={user.id} />
+                                <SingleDetail title={"Username"} value={user.username} />
+                                <SingleDetail title={"First Name"} value={user.name.split(" ")[0]} />
+                                <SingleDetail title={"Last Name"} value={user.name.split(" ")[1]} />
+                                <SingleDetail title={"E-mail"} value={user.email} />
+                                <SingleDetail title={"Company"} value={user.company.name} />
+                            </div>
+                            <div className="mt-4">
+                                <Link to={`../edit-user/${user.id}`} >
+                                    <ActionButton title={"Edit"} />
+                                </Link>
 
-                            <ActionButton onClickHandler={() => {deleteHandler(user.id)}} title={"Delete"} />
+                                <ActionButton onClickHandler={() => {deleteHandler(user.id)}} title={"Delete"} />
+                            </div>
                         </div>
-                    </div>
-                ))}
+                    ))}
+                </div>
             </div>
         </>
     )
